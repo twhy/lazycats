@@ -78,7 +78,7 @@
         prev = curr
       } else if (diff < wait) {
         clearTimeout(timer)
-        timer = setTimeout(fn, diff)
+        timer = setTimeout(fn, wait - diff)
       }
     }
   }
