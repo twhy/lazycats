@@ -18,8 +18,8 @@
     ).join('')
   }
 
-  function lazyload(cats) {
-    try {
+  function lazyload(images) {
+    if ('IntersectionObserver' in window) {
       let observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
           if (entry.intersectionRatio > 0) {
@@ -30,21 +30,21 @@
         })
       }, { threshold: 0.01 })
 
-      cats.forEach(cat => observer.observe(cat))
-    } catch (e) {
-      let imgs = [].slice.call(cats)
+      images.forEach(image => observer.observe(image))
+    } else {
+      let imgs = [].slice.call(images)
 
       let onscroll = throttle(function() {
         if (imgs.length === 0) {
-          return window.removeEventListener("scroll", onscroll)
+          return window.removeEventListener('scroll', onscroll)
         }
 
-        imgs = imgs.filter(img => img.classList.contains("lazyload"))
+        imgs = imgs.filter(img => img.classList.contains('lazyload'))
         imgs.forEach(img => inViewport(img) && loadImage(img))
       }, 300)
 
-      window.addEventListener("scroll", onscroll)
-      window.dispatchEvent(new Event("scroll"))
+      window.addEventListener('scroll', onscroll)
+      window.dispatchEvent(new Event('scroll'))
     }
   }
 
