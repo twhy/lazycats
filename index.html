@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Lazy Load Octocats</title>
+  <style>
+    body { margin: 0; padding-bottom: 50px; }
+    #cats {
+      display: flex; 
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+    #cats .cat {
+      flex: 1;
+      display: flex;
+      margin: 0 10px;
+      justify-content: center; 
+      flex-direction: column; 
+      text-align: center;
+    }
+    #cats .cat img {
+      width: 300px;
+      height: 300px;
+      display: block;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div id="cats"></div>
+  <script src="lazycats.js"></script>
+</body>
+</html>
